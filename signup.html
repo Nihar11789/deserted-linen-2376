@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input id="email" type="email" placeholder="Email" required>
+        <input id="firstName" type="text" placeholder="First Name" required >
+        <input  id="lastName" type="text" placeholder="Last Name">
+        <button>Verify</button>
+    </form>
+</body>
+</html>
+<script>
+    let users=JSON.parse(localStorage.getItem('users')) || []
+    document.querySelector('form').addEventListener('submit',check)
+    function check(e){
+        e.preventDefault();
+        let obj={
+            email:document.getElementById('email').value,
+            first_name:document.getElementById('firstName').value,
+            last_name:document.getElementById('lastName').value,
+            phone_number:localStorage.getItem('phone_number')
+        }
+        let flag=true;
+        for(let i=0;i<users.length;i++){
+            if(users[i].email==obj.email){
+                alert("user already exists")
+                flag=false;
+                break;
+            }
+        }
+        if(flag){
+            users.push(obj);
+            localStorage.setItem('users',JSON.stringify(users));
+            alert('sign up successfull')
+            localStorage.setItem('signed_in_user',JSON.stringify(obj));
+            // window.location.href='index.html'
+        }
+    }
+</script>
