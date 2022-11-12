@@ -1,0 +1,51 @@
+#upperline{
+ 
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #32AEB1;
+    
+    
+ }
+ #divisions{
+   height: 50px;
+   width: 100%;
+   display: flex;
+   justify-content: space-evenly;
+   align-items: center;
+   background-color: #32AEB1;
+   padding: 50px;
+   
+   
+ }
+ #divisions>img{
+  width: 50px;
+  height: 50px;
+   border-radius: 100%;
+   margin-right: -120px;
+ }
+
+ #upperline>input{
+    height: 50%;
+    padding: 0px 300px;
+    border-radius: 10px;
+    border: none;
+ }
+ #upperline>p{
+  color: white;
+  font-weight: 150;
+ }
+ #plain{
+   width: 95%;
+   margin: auto;
+   height: auto;
+   display: flex;
+   justify-content: space-evenly;
+   margin-top: 10px;
+ }
+ #carouselExampleIndicators
+ {
+  margin-top: 30px;
+ }
