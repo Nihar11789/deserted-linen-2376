@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products-Netmeds</title>
+</head>
+<body>
+    <div id="products-container">
+
+    </div>
+</body>
+</html>
+
+<script>
+
+ async function getData(){
+    // console.log("hello")
+    // let res1 = await fetch ("https://636f784abb9cf402c8185376.mockapi.io/products");
+    // let res2 = await res1.json();
+    // console.log(res2)
+    document.getElementById("products-container").innerText = "";
+    res2.forEach((elem)=>{
+        let div = document.createElement("div");
+
+        let img = document.createElement("img")
+        img.src = elem.avatar;
+
+        let name = document.createElement("h3")
+        name.innerText = elem.name;
+
+        let price = document.createElement("h4")
+        price.innerText = elem.price;
+
+        let addbtn = document.createElement("button");
+        addbtn.innerText = "Add to Cart"
+
+        div.append(img,name,price,addbtn);
+        document.getElementById("products-container").append(div);
+
+    })
+ }
+ getData()
+
+</script>
