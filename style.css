@@ -3,10 +3,10 @@
     height: 100px;
     width: 100%;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     background-color: #32AEB1;
-    
+    gap: 30px;
     
  }
  #divisions{
@@ -49,3 +49,42 @@
  {
   margin-top: 30px;
  }
+ i{
+  color: white;
+ }
+ a{
+  text-decoration: none;
+  color: white;
+ }
+ /* bottom */
+ #mid{
+  width: 90%;
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+ 
+}
+#mid>p{
+  font-size: large;
+  font-weight: -1000;
+}
+#bott>input{
+  height: 30px;
+  width: 100%;
+  border: none;
+}
+#bot{
+  
+  width: 90%;
+  height: auto;
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+
+}
+#footer{
+  width: 97%;
+  display: flex;
+  margin: auto;
+  justify-content: space-evenly;
+}
