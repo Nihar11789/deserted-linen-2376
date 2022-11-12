@@ -5,8 +5,70 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>products-Netmeds</title>
+    <style>
+        #upperline{
+ 
+ height: 100px;
+ width: 100%;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: #32AEB1;
+ gap: 30px;
+ 
+ 
+}
+#divisions{
+height: 50px;
+width: 100%;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+background-color: #32AEB1;
+padding: 50px;
+
+
+}
+#divisions>img{
+width: 50px;
+height: 50px;
+border-radius: 100%;
+margin-right: -120px;
+}
+
+#upperline>input{
+ height: 50%;
+ padding: 0px 300px;
+ border-radius: 10px;
+ border: none;
+}
+#upperline>p{
+color: white;
+font-weight: 150;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+i{
+    color: white;
+     
+}
+    </style>
+    <script src="https://kit.fontawesome.com/baf72c5c26.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <div id="upperline">
+        <img width="14%" src="https://nms-assets.s3-ap-south-1.amazonaws.com/images/cms/aw_rbslider/slides/1663609483_netmeds-new-logo.svg" alt="logo">
+        <input type="text" placeholder="| Search for medicine and wellness"/>
+        <p>Upload</p>
+        <div>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <a href="./cart.html">Cart</a>
+    </div>
+        <a href="./signin.html">Sign in / Sign up</a>
+       </div>
+
     <div id="products-container">
 
     </div>
@@ -14,18 +76,32 @@
 </html>
 
 <script>
-
+    let cartProduct = JSON.parse(localStorage.getItem("cart"))  || [];
+ let products=[
+{
+    id:1,
+    name:"INLIFE Vitamin D3 2000 IU Capsules 60's",
+    image:"https://www.netmeds.com/images/product-v1/600x600/858167/inlife_vitamin_d3_2000_iu_capsules_60s_78003_0_1.jpg",
+    price:401.33
+},
+{
+    id:2,
+    name:"INLIFE Vitamin D3 2000 IU Capsules 60's",
+    image:"https://www.netmeds.com/images/product-v1/600x600/858167/inlife_vitamin_d3_2000_iu_capsules_60s_78003_0_1.jpg",
+    price:502.33
+}
+]
  async function getData(){
     // console.log("hello")
     // let res1 = await fetch ("https://636f784abb9cf402c8185376.mockapi.io/products");
     // let res2 = await res1.json();
     // console.log(res2)
     document.getElementById("products-container").innerText = "";
-    res2.forEach((elem)=>{
+    products.forEach((elem)=>{
         let div = document.createElement("div");
-
+        div.setAttribute("id","card")
         let img = document.createElement("img")
-        img.src = elem.avatar;
+        img.src = elem.image;
 
         let name = document.createElement("h3")
         name.innerText = elem.name;
@@ -35,12 +111,33 @@
 
         let addbtn = document.createElement("button");
         addbtn.innerText = "Add to Cart"
+        addbtn.addEventListener("click",function(){
+        addtocart(elem);
+      })
 
         div.append(img,name,price,addbtn);
         document.getElementById("products-container").append(div);
 
     })
  }
+ function addtocart(elem){
+      console.log(elem)
+     let flag = false;
+     for(let i=0;i<cartProduct.length;i++){
+      if(elem.id == cartProduct[i].id){
+        flag = true;
+        break;
+      }
+     }
+      if(flag){
+        alert("Product Already in Cart")
+      } else {
+        elem = {...elem,quantity:1}
+        cartProduct.push(elem)
+        localStorage.setItem("cart",JSON.stringify(cartProduct))
+        alert("Product Added To Cart")
+      }
+    }
  getData()
 
 </script>

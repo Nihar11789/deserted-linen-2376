@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+    <style>
+      /* Write all necessery css here  */
+
+      #upperline{
+ 
+ height: 100px;
+ width: 100%;
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+ background-color: #32AEB1;
+ position: fixed;
+ top: 0;
+ 
+}
+
+#upperline>input{
+ height: 50%;
+ padding: 0px 300px;
+ border-radius: 10px;
+ border: none;
+}
+#upperline>p{
+color: white;
+font-weight: 150;
+}
+
+    </style>
+  </head>
+  <body>
+    
+    <div id="nav">
+        <div id="upperline">
+     <img width="14%" src="https://nms-assets.s3-ap-south-1.amazonaws.com/images/cms/aw_rbslider/slides/1663609483_netmeds-new-logo.svg" alt="logo">
+     <input type="text" placeholder="| Search for medicine and wellness"/>
+     <p>Upload</p>
+     <p>Cart</p>
+     <a style="margin-top: -15px;" href="./signin.html">Sign in / Sign up</a>
+    </div>
+
+    <h1 id="total">Your Total cart Price is:- <span id="cart-total">0</span></h1>
+    <div id="cart-container">
+      <!-- Here Append All the cart Products  -->
+    </div>
+  </body>
+  <script>
+    // Write all necessery JS here 
+
+    let cartProduct = JSON.parse(localStorage.getItem("cart")) || [];
+
+  function getData(){
+
+  let TotalPrice = 0;
+
+  document.getElementById("cart-container").innerText = "";
+  cartProduct.map((elem,index)=>{
+
+   let div = document.createElement("div");
+
+   let img = document.createElement("img");
+   img.src = elem.image;
+
+   let name = document.createElement("h2");
+   name.innerText = elem.name;
+
+   let price = document.createElement("h3");
+   price.innerText = elem.price;
+
+   let incButton = document.createElement("button");
+   incButton.innerText = "+"
+
+   incButton.addEventListener("click",function(){
+    incQuantity(elem,index);
+   })
+
+   let AddButton = document.createElement("span");
+   AddButton.innerText = elem.quantity;
+
+   let decButton = document.createElement("button");
+   decButton.innerText = "-";
+
+   decButton.addEventListener("click",function(){
+    decQuantity(elem,index);
+   })
+
+   let remButton = document.createElement("button");
+   remButton.innerText = "Remove";
+
+   remButton.addEventListener("click",function(){
+    remProduct(index);
+   })
+
+   div.append(img,name,price,incButton,AddButton,decButton,remButton);
+   document.getElementById("cart-container").append(div)
+
+   TotalPrice = TotalPrice+elem.price*elem.quantity
+   
+  })
+   document.getElementById("cart-total").innerText = TotalPrice;
+}
+
+  function remProduct(index){
+    cartProduct.splice(index,1)
+
+    localStorage.setItem("cart",JSON.stringify(cartProduct));
+    getData();
+  }
+
+  function incQuantity(elem,index){
+    cartProduct[index].quantity = elem.quantity+1;
+
+    localStorage.setItem("cart",JSON.stringify(cartProduct));
+    getData();
+  }
+
+  function decQuantity(elem,index){
+    cartProduct[index].quantity = elem.quantity-1;
+
+    localStorage.setItem("cart",JSON.stringify(cartProduct));
+    getData();
+  }
+
+  getData();
+
+  </script>
+</html>
