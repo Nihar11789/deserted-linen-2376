@@ -1,3 +1,6 @@
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
 #upperline{
  
     height: 100px;
@@ -7,6 +10,8 @@
     align-items: center;
     background-color: #32AEB1;
     gap: 30px;
+    position: fixed;
+    top: 0;
     
  }
  #divisions{
@@ -29,7 +34,7 @@
 
  #upperline>input{
     height: 50%;
-    padding: 0px 300px;
+    width: 50%;
     border-radius: 10px;
     border: none;
  }
@@ -80,11 +85,62 @@
   display: flex;
   margin: auto;
   justify-content: space-evenly;
-
+  
 }
 #footer{
   width: 97%;
   display: flex;
   margin: auto;
   justify-content: space-evenly;
+}
+#upper{
+  height: auto;
+  background-color: #f3f7fb;
+  padding: 20px;
+}
+#upper>h3{
+  font-size: medium;
+}
+#total{
+  margin-top: 120px;
+}
+/* products */
+#products-container{
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 30px;
+  margin: 50px;
+ 
+  
+}
+#products-container>div{
+  height: 500px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 3%;
+ 
+}
+#card>img{
+  width: 50%;
+  height: 50%;
+  margin: 40px;
+}
+#card>h3{
+  font-size: medium;
+  height: 13%;
+  margin-left: 15px;
+}
+#card>h4{
+  font-size: medium;
+  padding-bottom: 20px;
+  margin-left: 15px;
+}
+#addbtn{
+  width: 92%;
+  border-radius: 2%;
+  border: none;
+  padding: 10px 0px;
+  text-align: center;
+  margin-left: 13px;
+  background-color: #32AEB1;
+  color: white;
 }

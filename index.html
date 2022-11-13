@@ -20,7 +20,7 @@
  <div id="nav">
     <div id="upperline">
  <img width="14%" src="https://nms-assets.s3-ap-south-1.amazonaws.com/images/cms/aw_rbslider/slides/1663609483_netmeds-new-logo.svg" alt="logo">
- <input type="text" placeholder="| Search for medicine and wellness"/>
+ <input type="text" placeholder=" Search for medicine and wellness products..."/>
  <p>Upload</p>
  <div style="margin-top: -15px;">
   <i class="fa-solid fa-cart-shopping"></i>
@@ -88,6 +88,10 @@
   </a>
 </div>
 
+<div id="products-container">
+
+</div>
+
 <!-- bottom -->
 <div id="bottom">
   <div id="upper">
@@ -148,6 +152,9 @@
   </div>
       <hr width="80%"/>
 </div>
+
+
+
 <div id="bot">
   <div>
       <h4>COMPANY</h4>
@@ -207,6 +214,7 @@
 
 <!-- products -->
 <script>
+  let cartProduct = JSON.parse(localStorage.getItem("cart")) || [];
   let products=[
 {
     id:1,
@@ -216,9 +224,169 @@
 },
 {
     id:2,
-    name:"INLIFE Vitamin D3 2000 IU Capsules 60's",
-    image:"https://www.netmeds.com/images/product-v1/600x600/858167/inlife_vitamin_d3_2000_iu_capsules_60s_78003_0_1.jpg",
-    price:502.33
+    name:"Inlife Safed Musli Extract 500 mg Vegetarian Capsule 60's",
+    image:"https://www.netmeds.com/images/product-v1/600x600/858545/inlife_safed_musli_extract_500_mg_vegetarian_capsule_60s_78267_0_2.jpg",
+    price:328
+},
+{
+  id:3,
+  name:"INLIFE Glucosamine MSM Calcium Vitamin D3 Tablets 60's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/858152/inlife_glucosamine_msm_calcium_vitamin_d3_tablets_60s_77984_0_1.jpg",
+  price:495
+},
+{
+  id:4,
+  name:"INLIFE Vitamin D3 1000 IU Capsules 60's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/858166/inlife_vitamin_d3_1000_iu_capsules_60s_78002_0_1.jpg",
+  price:475.33
+},
+{
+  id:5,
+  name:"Dr.Morepen Gluco One Blood Glucose Test Strips 50's (BG03)",
+  image:"https://www.netmeds.com/images/product-v1/600x600/813592/dr_morepen_gluco_one_blood_glucose_test_strips_50_s_bg03_0.jpeg",
+  price:611.28
+},
+{
+  id:6,
+  name:"Accu-Chek Instant Glucometer with Free 10 Test Strips + Free Accu-Chek Instant",
+  image:"https://www.netmeds.com/images/product-v1/600x600/946954/accu_chek_instant_glucometer_with_free_10_test_strips_free_accu_chek_instant_test_strips_10s_0_0.jpg",
+  price:1161.23
+},
+{
+  id:7,
+  name:"OneTouch Select Plus Simple Blood Glucose Monitoring System (Free 10 Test Strips + Lancing Device + 10 Lancets)",
+  image:"https://www.netmeds.com/images/product-v1/600x600/854053/onetouch_select_plus_simple_blood_glucose_monitoring_system_10_test_strips_0_4.jpg",
+  price:871
+},
+{
+  id:8,
+  name:"Ensure Diabetes Care Powder - Vanilla Flavour 400 gm (Pet Jar)",
+  image:"https://www.netmeds.com/images/product-v1/600x600/413072/ensure_diabetes_care_powder_vanilla_flavour_400_gm_pet_jar_0.jpg",
+  price:734
+},
+{
+  id:9,
+  name:"Netmeds 3 Ply Face Mask with Nose Pin 100's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/977198/netmeds_3_ply_face_mask_with_nose_pin_100s_0_1.jpg",
+  price:220
+},
+{
+  id:10,
+  name:"Truuth Adult Diaper - Strap (M) 10's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/1042880/truuth_adult_diaper_strap_m_1s_476355_0_1.jpg",
+  price:388.33
+},
+{
+  id:11,
+  name:"Sahyog Wellness Hot Water Bottle/Bag - Red",
+  image:"https://www.netmeds.com/images/product-v1/600x600/902226/sahyog_wellness_hot_water_bottle_bag_red_0_1.jpg",
+  price:249
+},
+{
+  id:12,
+  name:"Tynor Life Heating Pad Ortho (Mini) (I-73)",
+  image:"https://www.netmeds.com/images/product-v1/600x600/1038910/tynor_life_heating_pad_ortho_mini_1s_394603_0_0.jpg",
+  price:697
+},
+{
+  id:13,
+  name:"Harpic Hygienic Toilet Cleaner Rim Block - Lavender 26 gm",
+  image:"https://www.netmeds.com/images/product-v1/600x600/1045834/harpic_hygienic_toilet_cleaner_rim_block_lavender_26_gm_416507_0_0.jpg",
+  price:69
+},
+{
+  id:14,
+  name:"Lizol Disinfectant Surface & Floor Cleaner Liquid - Jasmine 2 litre",
+  image:"https://www.netmeds.com/images/product-v1/600x600/1045848/lizol_disinfectant_surface_floor_cleaner_liquid_jasmine_2_litre_416521_0_0.jpg",
+  price:387
+},
+{
+  id:15,
+  name:"Candid Dusting Powder 120 gm",
+  image:"https://www.netmeds.com/images/product-v1/600x600/937127/candid_dusting_powder_120_gm_0_0.jpg",
+  price:130.50
+},
+{
+  id:16,
+  name:"Hansaplast Antiseptic Bandage - Regular (100's + Free 40's)",
+  image:"https://www.netmeds.com/images/product-v1/600x600/1042887/hansaplast_antiseptic_bandage_regular_100s_free_40s_408123_0_0.jpg",
+  price:176
+},
+{
+  id:17,
+  name:"Montasma Plus Tablet 10'S",
+  image:"https://www.netmeds.com/images/product-v1/600x600/360785/montasma_plus_tablet_10_s_0.jpg",
+  price:104
+},
+{
+  id:18,
+  name:"CARYZINE MD 10 Tablet 10's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/1044181/caryzine_md_10_tablet_10s_426906_0_0.jpg",
+  price:80
+},
+{
+  id:19,
+  name:"ADDTREX 50 Tablet 10's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/987009/addtrex_50_tablet_10s_0_0.jpg",
+  price:583
+},
+{
+  id:20,
+  name:"ACCUFINE 10mg Capsule 10's",
+  image:"https://www.netmeds.com/images/product-v1/600x600/917634/accufine_10mg_capsule_10s_0_0.jpg",
+  price:108
 }
 ]
+
+// products
+   function getData(){
+    // console.log("hello")
+    // let res1 = await fetch ("https://636f784abb9cf402c8185376.mockapi.io/products");
+    // let res2 = await res1.json();
+    // console.log(res2)
+    document.getElementById("products-container").innerText = "";
+    products.forEach((elem)=>{
+        let div = document.createElement("div");
+        div.setAttribute("id","card")
+        let img = document.createElement("img")
+        img.src = elem.image;
+
+        let name = document.createElement("h3")
+        name.innerText = elem.name;
+
+        let price = document.createElement("h4")
+        price.innerText = elem.price;
+
+        let addbtn = document.createElement("button");
+        addbtn.setAttribute("id","addbtn")
+        addbtn.innerText = "ADD TO CART"
+        addbtn.addEventListener("click",function(){
+        addtocart(elem);
+      })
+
+        div.append(img,name,price,addbtn);
+        document.getElementById("products-container").append(div);
+
+    })
+ }
+ function addtocart(elem){
+      console.log(elem)
+     let flag = false;
+     for(let i=0;i<cartProduct.length;i++){
+      if(elem.id == cartProduct[i].id){
+        flag = true;
+        break;
+      }
+     }
+      if(flag){
+        alert("Product Already in Cart")
+      } else {
+        elem = {...elem,quantity:1}
+        cartProduct.push(elem)
+        localStorage.setItem("cart",JSON.stringify(cartProduct))
+        alert("Product Added To Cart")
+      }
+    }
+ getData()
+
 </script>
