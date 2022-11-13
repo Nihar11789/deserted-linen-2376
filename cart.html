@@ -17,14 +17,23 @@
     <div id="nav">
         <div id="upperline">
             <img width="14%" src="https://nms-assets.s3-ap-south-1.amazonaws.com/images/cms/aw_rbslider/slides/1663609483_netmeds-new-logo.svg" alt="logo">
-            <input type="text" placeholder="| Search for medicine and wellness"/>
+            <input type="text" placeholder=" Search for medicine and wellness products..."/>
             <p>Upload</p>
             
             <a href="./signin.html">Sign in / Sign up</a>
            </div>
 
-    <h1 id="total">Your Total cart Price is:- <span id="cart-total">0</span></h1>
+    <h2 style="margin-top: 130px;margin-left: 15%;">Order Summary</h2>
+    <div id="parent">
+     
     <div id="cart-container">
+      
+    </div>
+    <div id="child1"> 
+      <h4>PAYMENT DETAILS</h4>
+      <h4 id="total">MRP Total :-  <span id="cart-total">0</span></h4>
+      <button onclick="myfun()">BUY NOW</button>
+    </div>
       <!-- Here Append All the cart Products  -->
     </div>
   </body>
@@ -41,7 +50,10 @@
   cartProduct.map((elem,index)=>{
 
    let div = document.createElement("div");
-   div.setAttribute("id","card")
+   let div2 = document.createElement("div");
+
+   div.setAttribute("id","cartwala")
+   div2.setAttribute("id","innercartwala")
    let img = document.createElement("img");
    img.src = elem.image;
 
@@ -69,13 +81,14 @@
    })
 
    let remButton = document.createElement("button");
-   remButton.innerText = "Remove";
+   remButton.innerText = "REMOVE";
+   remButton.setAttribute("id","buttonwala")
 
    remButton.addEventListener("click",function(){
     remProduct(index);
    })
-
-   div.append(img,name,price,incButton,AddButton,decButton,remButton);
+   div2.append(name,price,incButton,AddButton,decButton,remButton)
+   div.append(img,div2);
    document.getElementById("cart-container").append(div)
 
    TotalPrice = TotalPrice+elem.price*elem.quantity
@@ -106,6 +119,11 @@
   }
 
   getData();
+
+
+  function myfun(){
+    alert("Thankyou for purchasing!!!")
+  }
 
   </script>
 </html>
