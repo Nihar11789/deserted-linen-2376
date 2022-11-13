@@ -31,7 +31,7 @@
     </div>
     <div id="child1"> 
       <h4>PAYMENT DETAILS</h4>
-      <h4 id="total">MRP Total :-  <span id="cart-total">0</span></h4>
+      <h4 id="total">MRP Total :- ₹ <span id="cart-total">0</span></h4>
       <button onclick="myfun()">BUY NOW</button>
     </div>
       <!-- Here Append All the cart Products  -->
@@ -61,7 +61,7 @@
    name.innerText = elem.name;
 
    let price = document.createElement("h3");
-   price.innerText = elem.price;
+   price.innerText = "₹"+elem.price;
 
    let incButton = document.createElement("button");
    incButton.innerText = "+"
